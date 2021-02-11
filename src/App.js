@@ -11,6 +11,7 @@ import Player from './Player.js'
 import Profile from './Profile.js'
 import TeamDetails from './TeamDetails.js'
 import Logout from './Logout.js'
+import TeamComparer from './TeamComparer.js'
 
 
 
@@ -23,6 +24,7 @@ function App() {
   const [userTeams, setUserTeams] = useState([])
   const [search, setSearch] = useState("")
   const [isLoaded, setIsLoaded] = useState(false)
+  const [favorites, setFavorites] = useState([])
 
 console.log(userTeams)
 
@@ -57,6 +59,10 @@ console.log(userTeams)
     }, [])
 
 
+  function userFavorites(playerName){
+    const newFavorite = [...favorites, playerName]
+  } 
+
   
   function setLogin (){
     setLoggedIn(!loggedIn)
@@ -76,6 +82,18 @@ console.log(userTeams)
     console.log("Delete Picture", id)
     const newArray = userTeams.filter(team => team.id !== id)
     setUserTeams(newArray)
+  }
+
+
+  function editedTeams(teamObj){
+    userTeams.map(function(team){
+      if (teamObj.id === team.id){
+        const newPlayers = [...team.players, teamObj.players]
+      } 
+      else {
+        return null 
+      }
+    })
   }
 
 
@@ -106,13 +124,16 @@ console.log(userTeams)
           <NewsContainer loggedIn={loggedIn} news={news} />
         </Route>
         <Route exact path="/players">
-          <GraphContainer loggedIn={loggedIn} players={displayedPlayers} search={search} setSearch={setSearch} handleNewTeam={handleNewTeam}/>
+          <GraphContainer userFavorites={userFavorites} loggedIn={loggedIn} players={displayedPlayers} search={search} setSearch={setSearch} handleNewTeam={handleNewTeam}/>
         </Route>
         <Route exact path="/profile">
-          <Profile players={players} loggedIn={loggedIn} isLoaded={isLoaded} userTeams={userTeams} deleteTeam={deleteTeam} />
+          <Profile  players={players} loggedIn={loggedIn} isLoaded={isLoaded} userTeams={userTeams} deleteTeam={deleteTeam} />
         </Route>
         <Route exact path="/teams/:id">
-          <TeamDetails />
+          <TeamDetails userTeams={userTeams} />
+        </Route>
+        <Route exact path="/teamComparer">
+          <TeamComparer userTeams={userTeams} />
         </Route>
         <Route exact path="/logout">
           <Logout changeLogin={changeLogin} /> 

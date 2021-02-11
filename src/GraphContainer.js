@@ -7,16 +7,22 @@ import { Button } from 'primereact/button';
 
 
 
-function GraphContainer ({players, handleNewTeam, search, setSearch}) {
+function GraphContainer ({players, handleNewTeam, search, setSearch, newUserTeams, userFavorites}) {
 
 
-   const eachPlayer = players.map(function(player){
-        return <Player key={player.id} player={player} /> 
-   })
+  //  const eachPlayer = players.map(function(player){
+  //       return <Player key={player.id} player={player} /> 
+  //  })
        
    
     const paginatorLeft = <Button type="button" icon="pi pi-refresh" className="p-button-text" />;
     const paginatorRight = <Button type="button" icon="pi pi-cloud" className="p-button-text" />;
+
+   function handleFavorite(e){
+      e.preventDefault()
+
+      console.log(e.target)
+   }
 
 
    return (
@@ -29,7 +35,7 @@ function GraphContainer ({players, handleNewTeam, search, setSearch}) {
                 setSearch(e.target.value)
                 }}
                 />
-                <CreateTeam handleNewTeam={handleNewTeam} /> 
+                <CreateTeam handleNewTeam={handleNewTeam} newUserTeams={newUserTeams} /> 
                 <div>
         <div className="card">
           <DataTable value={players} className="p-datatable" paginator

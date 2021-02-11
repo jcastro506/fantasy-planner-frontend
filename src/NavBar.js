@@ -12,8 +12,11 @@ function handleClick(){
 
     return (
         <div>
-            <h1>Welcome To Fantasy Planner!</h1>
+            <h1>INSERT LOGO</h1>
             <div>
+            {loggedIn ?
+                <Link to="/">Home</Link>
+                : null }
                 {loggedIn ?
                 <Link to="/news">News</Link>
                 : null }
@@ -22,6 +25,9 @@ function handleClick(){
                 : null }
                 {loggedIn ? 
                 <Link to="/profile">Profile</Link>
+                : null }
+                {loggedIn ? 
+                <Link to="/teamComparer">Compare Team Stats</Link>
                 : null }
             </div>
             <div>

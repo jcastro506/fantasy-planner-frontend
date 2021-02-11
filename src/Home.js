@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import About from './About.js'
 import { useHistory } from "react-router-dom"
 
 
@@ -54,9 +55,9 @@ function Home({loggedIn, setLoggedIn}) {
             <input type="submit" value="Submit"></input>
          </form>
         </div>
-        : "Hey Josh!" }
+        : null }
 
-        {!loggedIn ? 
+        {/* {!loggedIn ? 
         <div>
             <h3>Signup</h3>
         <form onSubmit={handleSignUp}>
@@ -67,7 +68,10 @@ function Home({loggedIn, setLoggedIn}) {
             <input type="submit" value="Submit"></input>
          </form>
         </div>
-        : null }
+        : null } */}
+       
+        <About />
+        
 
     </div>
     );

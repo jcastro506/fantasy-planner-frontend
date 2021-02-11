@@ -2,13 +2,13 @@ import React from 'react'
 import Team from './Team.js'
 
 
-function TeamContainer ({team, deleteTeam, players, userTeams}){
+function TeamContainer ({team, deleteTeam, players, handleNewTeam}){
 
-    
+    console.log(team)
 
    return (
        <div>
-           <Team key={team.id} team={team} deleteTeam={deleteTeam} players={players} userTeams={userTeams} />
+           <Team key={team.id} team={team} deleteTeam={deleteTeam} players={players} handleNewTeam={handleNewTeam} />
        </div>
    )
     

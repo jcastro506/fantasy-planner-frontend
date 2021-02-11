@@ -1,32 +1,28 @@
 import React, {useState} from 'react' 
 
 
-function Player ({player}){
+function Player ({builder}){
 
-    const {
-        name
-    } = player
+        function handleSubmit(e){
 
+            e.preventDefault()
+            const builderId = e.target.value
 
-     function handleSubmit (e){
-
-        console.log(e.target)
-
-
-        const newPlayer = {
-            player: e.target
+            fetch(`http://localhost:3000/team_builders/${builderId}`, {
+                method: "DELETE"
+            })
+            .then(r => r.json())
+            .then(() => {
+                console.log("finished")
+            })
         }
-     }
-
 
 
     return (
-    //     <div style={{ height: 400, width: '100%' }}>
-    //     <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-    //   </div>
-    <div>
-        <p>{name}</p>
-    </div>
+        <div onClick={handleSubmit}>
+            {/* {player.name} */}
+            <button key={builder.id} value={builder.id}>Release</button>
+        </div>
     )   
 
 

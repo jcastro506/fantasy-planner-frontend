@@ -11,10 +11,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography'
+import Player from './Player.js'
 
 
-function Team ({team, deleteTeam, players, userTeams}) {
+function Team ({team, deleteTeam, players, handleNewTeam}) {
 
+    console.log(team)
 
     const [selected, setSelected] = useState('')
     const [editClicked, setEditClicked] = useState(false)
@@ -37,9 +39,12 @@ function Team ({team, deleteTeam, players, userTeams}) {
 
     const classes = useStyles();
 
+    const eachPlayer = () => team.team_builders.map(function(builder){
+        return <Player key={builder.id} builder={builder}/>
+    })
 
-    const eachPlayer = team.players.map(function(player){
-        return (player.name)
+    const allPlayers = team.players.map(function(player){
+        return player.name
     })
 
 
@@ -62,7 +67,6 @@ function Team ({team, deleteTeam, players, userTeams}) {
         })
     }
 
-   
 
     function handleChange(e){
         e.preventDefault()
@@ -71,17 +75,22 @@ function Team ({team, deleteTeam, players, userTeams}) {
             team_id: teamID,
             player_id: playerOne
         }
+
+        console.log(newPlayerOne)
     
 
         fetch(`http://localhost:3000/team_builders`, {
+            method: 'POST', 
             headers: {
-                method: "PATCH",
-                headers: {
-              'Content-Type': 'application/json'
-            },                                                              
-            body: JSON.stringify(newPlayerOne)                                        
-            }
-        })
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newPlayerOne),
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+          })
+    
 
         //   fetch(`http://localhost:3000/team_builders`, {
         //     headers: {
@@ -92,36 +101,6 @@ function Team ({team, deleteTeam, players, userTeams}) {
         //     body: JSON.stringify(newPlayerTwo)                                        
         //     }
         // })
-
-        //   fetch(`http://localhost:3000/team_builders`, {
-        //     headers: {
-        //         method: "PATCH",
-        //         headers: {
-        //       'Content-Type': 'application/json'
-        //     },                                                              
-        //     body: JSON.stringify(newPlayerThree)                                        
-        //     }
-        // })
-
-        //   fetch(`http://localhost:3000/team_builders`, {
-        //     headers: {
-        //         method: "PATCH",
-        //         headers: {
-        //       'Content-Type': 'application/json'
-        //     },                                                              
-        //     body: JSON.stringify(newPlayerFour)                                        
-        //     }
-        // })
-
-        //   fetch(`http://localhost:3000/team_builders`, {
-        //     headers: {
-        //         method: "PATCH",
-        //         headers: {
-        //       'Content-Type': 'application/json'
-        //     },                                                              
-        //     body: JSON.stringify(newPlayerFive)                                        
-        //     }
-        // })
     }
 
     // console.log(team.id)
@@ -130,13 +109,14 @@ function Team ({team, deleteTeam, players, userTeams}) {
     function changeEdit(){
         setEditClicked(!editClicked)
         setTeamId(team.id)
+        console.log(team)
+        console.log(team.team_builders[0])
     }
+    console.log(teamID)
     
     const handleFirstOption = (e) => {
         setPlayerOne(e.target.value)
     }
-
-    console.log(teamID)
 
     return (
         <div>
@@ -152,9 +132,9 @@ function Team ({team, deleteTeam, players, userTeams}) {
                 {team.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-                Players: {eachPlayer}
+                Players: {allPlayers} {eachPlayer()} 
                 <br></br>
-                Total Points: {totalPoints()}
+                Projected Total Points: {totalPoints()}
             </Typography>
             </CardContent>
         </CardActionArea>
@@ -179,45 +159,11 @@ function Team ({team, deleteTeam, players, userTeams}) {
                         return <option key={player.id} value={player.id}>{player.name}</option>
                     })} 
                 </select>
-                <select 
-                name= "players"
-                value={playerTwo}
-                onChange={(e) => setPlayerTwo(e.target.value)}>
-                    {players.map(function(player){
-                        return <option key={player.id} value={player.id}>{player.name}</option>
-                    })} 
-                </select>
-                <select 
-                name= "players"
-                value={playerThree}
-                onChange={(e) => setPlayerThree(e.target.value)}>
-                    {players.map(function(player){
-                        return <option key={player.id} value={player.id}>{player.name}</option>
-                    })} 
-                </select>
-                <select 
-                name= "players"
-                value={playerFour}
-                onChange={(e) => setPlayerFour(e.target.value)}>
-                    {players.map(function(player){
-                        return <option key={player.id} value={player.id}>{player.name}</option>
-                    })} 
-                </select>
-                <select 
-                name= "players"
-                value={playerFive}
-                onChange={(e) => setPlayerFive(e.target.value)}>
-                    {players.map(function(player){
-                        return <option key={player.id} value={player.id}>{player.name}</option>
-                    })} 
-                </select>              
-                
             </label>
-            <button>Change Team</button>
+            <button>Pick Up</button>
         </form>
         : null }
     </div>
- 
         )
     }
 
