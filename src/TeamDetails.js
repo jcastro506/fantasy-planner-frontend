@@ -8,13 +8,14 @@ function TeamDetails ({userTeams}){
 
     const [team, setTeam] = useState(null)
 
-    const data1 = [4642, 4638, 4700, 4632, 4551, 5039, 4798, 4545, 4345, 4375, 4869, 4587, 4654, 4733, 4540, 4805, 4800, 4560, 4656, 4968]
+    // const data1 = [4642, 4638, 4700, 4632, 4551, 5039, 4798, 4545, 4345, 4375, 4869, 4587, 4654, 4733, 4540, 4805, 4800, 4560, 4656, 4968]
     // const data2 = [2869, 1587, 164, 5733, 5540]
     // const data3 = [5805, 1400, 346, 9656, 13068]
     // const data4 = [6793, 1667, 341, 11467, 12415]
     // const data5 = [7039, 2098, 345, 13145, 13575]
 
-    let random = data1.sort(() => .5 - Math.random()).slice(0,5)
+    // let random = data1.sort(() => .5 - Math.random()).slice(0,5)
+
 
 
     const params = useParams()
@@ -28,47 +29,30 @@ function TeamDetails ({userTeams}){
             )
     }, [params.id])
 
+    let totalArr = []
 
-    // function teamFunc (){
-    //     if (team)  {
-    //         console.log(team)
-    //         let totalArr = []
-    //         let pointsArr = 0
-    //         let reboundsArr = 0
-    //         let fieldGoalArr = 0
-    //         let fantasytPointsArr = 0
-    //         let minutesArr = 0
-    //         team.players.map((player) => {
-    //             console.log(player)
-    //             pointsArr += player.points
-    //             reboundsArr += player.rebounds
-    //             fieldGoalArr += player.field_goal_percentage
-    //             fantasytPointsArr += player.fantasy_points
-    //             minutesArr += player.minutes_played
-    //         })
-    //         totalArr.push(pointsArr, reboundsArr, fieldGoalArr, fantasytPointsArr, minutesArr)
-    //         console.log(totalArr)
-    //         return totalArr
-    //     }
-    // }
-
-    // function getData (){
-    //     if (team && team.id === 1){
-    //         return data1
-    //     } 
-    //     else if (team && team.id === 4) {
-    //         return data2
-    //     }
-    //     else if (team && team.id === 43) {
-    //         return data3 
-    //     }
-    //     else if (team && team.id === 51) {
-    //         return data4 
-    //     }
-    //     else {
-    //         return data5 
-    //     }
-    // }
+    function teamFunc (){
+        if (team)  {
+            console.log(team)
+            // let totalArr = []
+            let pointsArr = 0
+            let reboundsArr = 0
+            let fieldGoalArr = 0
+            let fantasytPointsArr = 0
+            let minutesArr = 0
+            team.players.map((player) => {
+                console.log(player)
+                pointsArr += player.points
+                reboundsArr += player.rebounds
+                fieldGoalArr += player.field_goal_percentage
+                fantasytPointsArr += player.fantasy_points
+                minutesArr += player.minutes_played
+            })
+            totalArr.push(pointsArr, reboundsArr, fieldGoalArr/team.players.length, fantasytPointsArr, minutesArr)
+            console.log(totalArr)
+            return totalArr
+        }
+    }
 
     function teamNameFunc (){
         if (team){
@@ -76,11 +60,11 @@ function TeamDetails ({userTeams}){
         }
     }
 
-    console.log(team)
-    // `${teamFunc()}`
+
+    teamFunc()
     
     const chartData = {
-        labels: ['League Points', 'Rebounds', 'Field Goals Made', 'Assists', 'Minutes'],
+        labels: ['League Points', 'Rebounds', 'Field Goal Percentage', 'Assists', 'Minutes'],
         datasets: [
             {
                     label: `${teamNameFunc()}`,
@@ -90,18 +74,8 @@ function TeamDetails ({userTeams}){
                     pointBorderColor: '#fff',
                     pointHoverBackgroundColor: '#fff',
                     pointHoverBorderColor: 'rgba(255,99,132,1)',
-                    data: random
+                    data: totalArr
                 }
-            // {
-            //     label: 'My Second dataset',
-            //     backgroundColor: 'rgba(255,99,132,0.2)',
-            //     borderColor: 'rgba(255,99,132,1)',
-            //     pointBackgroundColor: 'rgba(255,99,132,1)',
-            //     pointBorderColor: '#fff',
-            //     pointHoverBackgroundColor: '#fff',
-            //     pointHoverBorderColor: 'rgba(255,99,132,1)',
-            //     data: `${teamFunc()}`
-            // }
         ]
     };
 
