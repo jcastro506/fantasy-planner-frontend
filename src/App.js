@@ -12,6 +12,8 @@ import Profile from './Profile.js'
 import TeamDetails from './TeamDetails.js'
 import Logout from './Logout.js'
 import TeamComparer from './TeamComparer.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import About from './About.js'
 
 
 
@@ -121,7 +123,10 @@ console.log(userTeams)
           <Signup />
         </Route>
         <Route exact path="/news">
-          <NewsContainer loggedIn={loggedIn} news={news} />
+          <NewsContainer news={news} />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
         <Route exact path="/players">
           <GraphContainer userFavorites={userFavorites} loggedIn={loggedIn} players={displayedPlayers} search={search} setSearch={setSearch} handleNewTeam={handleNewTeam}/>

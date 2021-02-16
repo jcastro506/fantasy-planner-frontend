@@ -4,19 +4,24 @@ import { makeStyles } from '@material-ui/core/styles';
 import TeamDetails from './TeamDetails.js'
 import EditTeam from './EditTeam.js'
 import { Dropdown } from 'primereact/dropdown';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography'
+// import Card from '@material-ui/core/Card';
+// import CardActionArea from '@material-ui/core/CardActionArea';
+// import CardActions from '@material-ui/core/CardActions';
+// import CardContent from '@material-ui/core/CardContent';
+// import CardMedia from '@material-ui/core/CardMedia';
+// import Button from '@material-ui/core/Button';
+// import Typography from '@material-ui/core/Typography'
 import Player from './Player.js'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
+import Nav from 'react-bootstrap/Navbar'
+import Popover from 'react-bootstrap/Popover'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+
 
 
 function Team ({team, deleteTeam, players, handleNewTeam}) {
 
-    console.log(team)
 
     const [selected, setSelected] = useState('')
     const [editClicked, setEditClicked] = useState(false)
@@ -28,26 +33,60 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
     const [teamID, setTeamId] = useState(0)
 
 
-    const useStyles = makeStyles({
-        root: {
-          maxWidth: 345,
-        },
-        media: {
-          height: 140,
-        },
-      });
+    const data1 = [3642, 2238, 68, 432, 716,
+     2805, 1800, 60, 356, 447,
+     2500, 1013, 66, 420, 700,
+     3100, 2221, 72, 522, 629,
+     2865, 1255, 61, 375, 891
+    ]
 
-    const classes = useStyles();
+    const randomData = () => {
+        return data1[Math.floor(Math.random() * data1.length)]
+    }
+
+    // const useStyles = makeStyles({
+    //     root: {
+    //       maxWidth: 345,
+    //     },
+    //     media: {
+    //       height: 140,
+    //     },
+    //   });
+
+    // const classes = useStyles();
+
+    function handleRelease(e){
+        e.preventDefault()
+        console.log(e.target.value)
+            
+        // const builderId = e.target.value
+
+        //  fetch(`http://localhost:3000/team_builders/${builderId}`, {
+        //         method: "DELETE"
+        //     })
+        //     .then(r => r.json())
+        //     .then(() => {
+        //         console.log("finished")
+        //     })
+    }
 
     const eachPlayer = () => team.team_builders.map(function(builder){
         return <Player key={builder.id} builder={builder}/>
     })
 
+
     const allPlayers = team.players.map(function(player){
-        return player.name
+        return (
+            <div>
+                <ul>
+                    <li class="playerNames">{player.name}</li>
+                </ul>
+
+           </div>
+        )
     })
 
-
+    
     function totalPoints(){
         let totalPoints = 0
         team.players.map(function(player){
@@ -119,8 +158,37 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
     }
 
     return (
-        <div>
-        <Card className={classes.root} >
+    <div class="teamCards">
+        <Card class="teamCards" style={{ width: '32rem' }}>
+        <Card.Img variant="top" src="https://www.wkbn.com/wp-content/uploads/sites/48/2020/11/national-basketball-association-logo.jpg?w=1280" />
+        <Card.Body>
+            <Card.Title>{team.name}</Card.Title>
+            <Card.Text class="row justify-content-center">
+            {allPlayers}
+            {/* {eachPlayer()} */}
+            <br></br>
+            <br></br>
+            Projected Total Points: {totalPoints()}
+            </Card.Text>
+            <div class="editteam">
+            <Button onClick={changeEdit} size="small" color="primary" variant="dark">{' '}
+            Pickup Player
+            </Button>
+            </div>
+            <br></br>
+            <div>
+            <Button onClick={handleDelete} size="small" color="primary" variant="dark" id={team.id}>{' '}
+            Delete
+            </Button>
+            <br></br>
+            <br></br>
+            <Link to={`/teams/${team.id}`}>See Stats</Link>
+            </div>
+        </Card.Body>
+        </Card>
+
+
+        {/* <Card className={classes.root} >
         <CardActionArea>
             <CardMedia
             className={classes.media}
@@ -147,7 +215,7 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
             </Button>
             <Link to={`/teams/${team.id}`}>See Stats</Link>
         </CardActions>
-        </Card>
+        </Card> */}
         {editClicked ? 
         <form onSubmit={handleChange} >
             <label>Pick A New Player

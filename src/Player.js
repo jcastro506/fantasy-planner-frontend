@@ -1,4 +1,5 @@
 import React, {useState} from 'react' 
+import Button from 'react-bootstrap/Button'
 
 
 function Player ({builder}){
@@ -20,8 +21,7 @@ function Player ({builder}){
 
     return (
         <div onClick={handleSubmit}>
-            {/* {player.name} */}
-            <button key={builder.id} value={builder.id}>Release</button>
+            <button class="small-btn" key={builder.id} value={builder.id} size="small">Release Player</button>
         </div>
     )   
 

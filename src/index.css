@@ -5,9 +5,119 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:black;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#home {
+  margin: auto;
+  width: 50%;
+  height: 30%;
+  padding: 10%;
+  font: white;
+}
+
+.homeBody{
+  background-image: url(https://www.tampabay.com/resizer/IZqXAO-5XUo34riWREFncbe25eg=/1600x900/smart/cloudfront-us-east-1.images.arcpublishing.com/tbt/CQGZASQ3FJEN3ODA2FV6JXLDKA.JPG);
+  /* margin: auto;
+  width: auto;
+  height: auto; */ 
+  /* background-size: cover; */
+  /* background: url('https://www.tampabay.com/resizer/IZqXAO-5XUo34riWREFncbe25eg=/1600x900/smart/cloudfront-us-east-1.images.arcpublishing.com/tbt/CQGZASQ3FJEN3ODA2FV6JXLDKA.JPG') no-repeat center fixed;      */
+  background-size: cover;
+  width: 100%;
+  height: 900px;
+  color:white
+}
+
+.navbar {
+  display: flex;
+  margin: auto;
+  width: 100%;
+}
+
+.about {
+  display: flex;
+  background: white;
+  background-size: cover;
+  /* width: 100%;
+  height: 900px; */
+}
+
+.news{
+  display: inline-grid;
+  /* display: flex; */
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  background-color: black;
+  background:black
+}
+
+.playersTable {
+    margin-bottom: 2rem;
+}
+
+.searchBar {
+  /* width: 100px;
+  margin: auto; */
+  width: 500px;
+  position: relative;
+  display: flex;
+  align-items: center; /* Not necessary but will center the items */
+  flex-direction: row; /* Not necessary but tells that they should be in a row */
+  justify-content: flex-start; /* Will align items to left on larger screens */
+  flex-wrap: wrap; 
+}
+
+#button {
+  background-color:none; /* Green */
+  border: black;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.addPlayers { 
+  display: inline-grid;
+}
+
+.teamCards {
+  /* display: inline-grid; */
+  /* display: flex; */
+  /* grid-template-columns: auto auto auto;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  background-color: black; */
+  /* background:rgb(219, 219, 219) */ 
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px
+}
+
+.playerNames:hover {
+  color: #2693ff;
+}
+
+.editteams {
+
+}
+
+.myTeams {
+  color: white;
+}
+
+.about {
+  background-color: black;
 }

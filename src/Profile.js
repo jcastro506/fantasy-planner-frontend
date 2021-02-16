@@ -15,7 +15,7 @@ function Profile ({players, userTeams, loggedIn, deleteTeam, handleNewTeam}){
     
     return (
         <div>
-            <h3>My Teams</h3>
+            <h2 class="myTeams">My Teams</h2>
             {renderTeams()}
         </div>
     )

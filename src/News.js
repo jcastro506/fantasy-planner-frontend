@@ -1,12 +1,5 @@
 import React from 'react'  
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography'
+import Card from 'react-bootstrap/Card'
 
 
 function News ({article}) {
@@ -19,48 +12,47 @@ function News ({article}) {
         URL,
         OriginalSourceUrl
     } = article
+    
 
+    const imageArr = [
+      "https://clutchpoints.com/wp-content/uploads/2020/06/Greatest-NBA-Players-Best-NBA-Players-Ranking-NBA-Players-NBA-Goat.-Who-Is-The-Best-Player-Ever-1.jpg",
+      "https://oddslifenetstorage.blob.core.windows.net/sbcamericas/2018/07/NBAApp-Playoffs18-Roku-1200x628-1068x559.jpg",
+      "https://cdn.vox-cdn.com/thumbor/A96j6bHwcqiYAoE3GavXJgWaGV8=/0x0:3200x1800/1200x675/filters:focal(1248x358:1760x870)/cdn.vox-cdn.com/uploads/chorus_image/image/63069423/nba_25_best_2_getty_ringer.0.jpg",
+      "https://www.wkbn.com/wp-content/uploads/sites/48/2020/11/national-basketball-association-logo.jpg?w=1280"
+    ]
 
-    const useStyles = makeStyles({
-        root: {
-          maxWidth: 345,
-        },
-        media: {
-          height: 140,
-        },
-      });
+    let randomPic = Math.floor(Math.random()*imageArr.length)
 
-    const classes = useStyles();
+    const getPic = () => {
+      return randomPic
+    }
+
+    function HandleTab() { 
+      window.open( 
+        `${OriginalSourceUrl}`, "_blank"); 
+  } 
+
 
   return (
-      <div>
-        <Card className={classes.root}>
-        <CardActionArea>
-            <CardMedia
-            className={classes.media}
-            image="https://blog.logomyway.com/wp-content/uploads/2017/01/nba-logo-design.jpg"
-            title={Title}
-            />
-            <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-                {Title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-                {Content}
-            </Typography>
-            </CardContent>
-        </CardActionArea>
-        <CardActions>
-            <Button size="small" color="primary">
-            Share
-            </Button>
-            <Button size="small" color="primary">
-            Learn More
-            </Button>
-        </CardActions>
-        </Card>
+      <div class="news">
+         <Card style={{ width: '25rem' }}>
+          <Card.Img variant="top" src="https://www.wkbn.com/wp-content/uploads/sites/48/2020/11/national-basketball-association-logo.jpg?w=1280" />
+          <Card.Body>
+            <Card.Title>{Title}</Card.Title>
+            <p>({TimeAgo})</p>
+            <Card.Text>
+              {Content}
+            </Card.Text>
+            </Card.Body>
+            <Card.Body>
+            <Card.Link onClick={HandleTab}>Original Source</Card.Link>
+          </Card.Body>
+          </Card>
+          <hr></hr>
+          <br></br>
+        
     </div>
-  );
+  ); 
 
 }
 

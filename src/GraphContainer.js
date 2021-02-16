@@ -4,6 +4,7 @@ import CreateTeam from './CreateTeam.js'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
+import Form from 'react-bootstrap/Form'
 
 
 
@@ -15,8 +16,8 @@ function GraphContainer ({players, handleNewTeam, search, setSearch, newUserTeam
   //  })
        
    
-    const paginatorLeft = <Button type="button" icon="pi pi-refresh" className="p-button-text" />;
-    const paginatorRight = <Button type="button" icon="pi pi-cloud" className="p-button-text" />;
+    const paginatorLeft = <Button type="button" icon="pi pi-refresh" className="p-button-text"/>;
+    const paginatorRight = <Button type="button" icon="pi pi-cloud" className="p-button-text"/>;
 
    function handleFavorite(e){
       e.preventDefault()
@@ -24,23 +25,24 @@ function GraphContainer ({players, handleNewTeam, search, setSearch, newUserTeam
       console.log(e.target)
    }
 
+  
 
    return (
-         <div>
-            <input
-                type="text"
-                placeholder={"Search For A Player"}
-                value={search}
-                onChange={(e) => {
-                setSearch(e.target.value)
-                }}
-                />
-                <CreateTeam handleNewTeam={handleNewTeam} newUserTeams={newUserTeams} /> 
-                <div>
+         <div class="playersTable">
+           <div class="searchBar">
+              <Form>
+                <Form.Group controlId="searchBar">
+                  <Form.Control type="search" placeholder="Search" value={search} onChange={(e) => {setSearch(e.target.value)}}/>
+                </Form.Group>
+            </Form>
+            </div>
+            <CreateTeam handleNewTeam={handleNewTeam} newUserTeams={newUserTeams} />
+                {/* <CreateTeam handleNewTeam={handleNewTeam} newUserTeams={newUserTeams} />  */}
+                {/* <div> */}
         <div className="card">
           <DataTable value={players} className="p-datatable" paginator
             paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
-            currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" rows={15} rowsPerPageOptions={[10, 20, 50]}
+            rows={15} 
             paginatorLeft={paginatorLeft} paginatorRight={paginatorRight}>
             <Column className="table-props" style={{width: "125px"}} field="id" header="Id" sortable></Column>
             <Column className="table-props" style={{width: "125px"}} field="name" header="Name" sortable></Column>
@@ -55,9 +57,7 @@ function GraphContainer ({players, handleNewTeam, search, setSearch, newUserTeam
           </DataTable>
         </div>
       </div>
-                {/* {eachPlayer} */}
-        </div>
-            )
+    )
                 
 }
 
