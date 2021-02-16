@@ -9,9 +9,12 @@ function NewsContainer ({news}) {
     
 
      return (
-            news.map(function(article){
+         <div>
+            <h2 class="h2">League News</h2>
+            {news.map(function(article){
             return <News key={article.NewsID} article={article} />
-         })
+         })}
+         </div>
     )
     
 }

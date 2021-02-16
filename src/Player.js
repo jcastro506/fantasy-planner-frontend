@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Button from 'react-bootstrap/Button'
 
 
-function Player ({builder}){
+function Player ({builder, setUserTeams}){
 
         function handleSubmit(e){
 
@@ -14,8 +14,10 @@ function Player ({builder}){
             })
             .then(r => r.json())
             .then(() => {
-                console.log("finished")
-            })
+                fetch("http://localhost:3000/users/1")
+                .then((r) => r.json())
+                .then((user) => setUserTeams(user.teams))
+              })
         }
 
 

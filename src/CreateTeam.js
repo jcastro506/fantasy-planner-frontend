@@ -144,7 +144,7 @@ function CreateTeam ({handleNewTeam}){
         </div> */}
          <form className="" onSubmit={handleSubmit}>
             <label>Name Your Team</label>
-            <input type="text" name="teamName" placeholder="Josh's Dream Team" value={teamName} onChange={e => setTeamName(e.target.value)}/> 
+            <input type="text" name="teamName" placeholder="Team Name" value={teamName} onChange={e => setTeamName(e.target.value)}/> 
             <button>Create Team</button> 
         </form>
         {clicked ? 

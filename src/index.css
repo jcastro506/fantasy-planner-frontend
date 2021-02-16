@@ -99,11 +99,19 @@ code {
   margin: 10px;
   background-color: black; */
   /* background:rgb(219, 219, 219) */ 
-  display: inline-grid;
-  grid-template-columns: auto auto auto;
+  display: flex;
+  flex-direction: row;
+  /* display: inline-grid; */
+  grid-template-columns: auto auto;
   justify-content: center;
   padding: 10px;
   margin: 10px
+}
+
+.eachCard {
+  display: inline-grid;
+  flex-direction: row;
+  grid-template-rows: auto auto;
 }
 
 .playerNames:hover {
@@ -114,10 +122,20 @@ code {
 
 }
 
-.myTeams {
+.h2 {
   color: white;
 }
 
 .about {
   background-color: black;
 }
+
+.releaseList {
+  color: white;
+}
+
+/* .flex-container {
+  display: flex;
+  grid-template-rows: auto auto;
+  margin: auto;
+} */

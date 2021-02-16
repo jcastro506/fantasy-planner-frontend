@@ -132,7 +132,7 @@ console.log(userTeams)
           <GraphContainer userFavorites={userFavorites} loggedIn={loggedIn} players={displayedPlayers} search={search} setSearch={setSearch} handleNewTeam={handleNewTeam}/>
         </Route>
         <Route exact path="/profile">
-          <Profile  players={players} loggedIn={loggedIn} isLoaded={isLoaded} userTeams={userTeams} deleteTeam={deleteTeam} />
+          <Profile  setUserTeams={setUserTeams} players={players} loggedIn={loggedIn} isLoaded={isLoaded} userTeams={userTeams} deleteTeam={deleteTeam} handleNewTeam={handleNewTeam}/>
         </Route>
         <Route exact path="/teams/:id">
           <TeamDetails userTeams={userTeams} />

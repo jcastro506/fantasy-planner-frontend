@@ -20,7 +20,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 
 
-function Team ({team, deleteTeam, players, handleNewTeam}) {
+function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
 
 
     const [selected, setSelected] = useState('')
@@ -31,6 +31,7 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
     const [playerFour, setPlayerFour] = useState(0)
     const [playerFive, setPlayerFive] = useState(0)
     const [teamID, setTeamId] = useState(0)
+    const [releasedPlayer, setReleasedPlayer] = useState(null)
 
 
     const data1 = [3642, 2238, 68, 432, 716,
@@ -71,7 +72,7 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
     }
 
     const eachPlayer = () => team.team_builders.map(function(builder){
-        return <Player key={builder.id} builder={builder}/>
+        return <Player key={builder.id} builder={builder} setUserTeams={setUserTeams}/>
     })
 
 
@@ -115,6 +116,8 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
             player_id: playerOne
         }
 
+        console.log(e.target)
+
         console.log(newPlayerOne)
     
 
@@ -125,11 +128,16 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
             },
             body: JSON.stringify(newPlayerOne),
           })
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
+          .then((r) => r.json())
+          .then((user) => {
+            fetch("http://localhost:3000/users/1")
+            .then((r) => r.json())
+            .then((user) => setUserTeams(user.teams))
           })
+    }
     
+    
+
 
         //   fetch(`http://localhost:3000/team_builders`, {
         //     headers: {
@@ -140,7 +148,7 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
         //     body: JSON.stringify(newPlayerTwo)                                        
         //     }
         // })
-    }
+    
 
     // console.log(team.id)
     
@@ -149,7 +157,6 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
         setEditClicked(!editClicked)
         setTeamId(team.id)
         console.log(team)
-        console.log(team.team_builders[0])
     }
     console.log(teamID)
     
@@ -157,8 +164,29 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
         setPlayerOne(e.target.value)
     }
 
+
+    function handlePlayerRelease(e){
+        e.preventDefault()
+        
+        console.log(releasedPlayer)
+
+        if (releasedPlayer){
+        fetch(`http://localhost:3000/players/${releasedPlayer}`, {
+            method: "DELETE"
+        })
+        .then((r) => r.json())
+        .then((user) => {
+            console.log(user)
+        })
+    }
+        else {
+        return null
+        }
+    }
+
     return (
     <div class="teamCards">
+        <div class="eachCard">
         <Card class="teamCards" style={{ width: '32rem' }}>
         <Card.Img variant="top" src="https://www.wkbn.com/wp-content/uploads/sites/48/2020/11/national-basketball-association-logo.jpg?w=1280" />
         <Card.Body>
@@ -186,7 +214,7 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
             </div>
         </Card.Body>
         </Card>
-
+        </div>
 
         {/* <Card className={classes.root} >
         <CardActionArea>
@@ -217,8 +245,9 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
         </CardActions>
         </Card> */}
         {editClicked ? 
+        <div>
         <form onSubmit={handleChange} >
-            <label>Pick A New Player
+            <label class="releaseList">Pick A New Player
                 <select 
                 name= "players"
                 value={playerOne}
@@ -230,6 +259,15 @@ function Team ({team, deleteTeam, players, handleNewTeam}) {
             </label>
             <button>Pick Up</button>
         </form>
+        <form onSubmit={handlePlayerRelease} >
+            <label class="releaseList">Release A Player
+                <ol class="releaseList">
+                    {team.players.map(function(player){return <li>{player.name}</li>})}{eachPlayer()}
+                </ol>
+                {/* {eachPlayer()} */}
+            </label>
+        </form>
+    </div>
         : null }
     </div>
         )
