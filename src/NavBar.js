@@ -1,4 +1,4 @@
-import React from 'react' 
+import React, {useState} from 'react' 
 import Login from './Login.js'
 import { Link } from "react-router-dom"
 import Navbar from "react-bootstrap/Navbar"
@@ -7,10 +7,14 @@ import NavDropdown from "react-bootstrap/NavDropdown"
 
 
 
-function NavBar ({loggedIn, changeLogin}){
+function NavBar ({loggedIn, setLogin}){
+
+
+ 
+
 
 function handleClick(){
-    changeLogin()
+    setLogin()
 }
 
 
@@ -43,7 +47,7 @@ function handleClick(){
         //     <br></br>
         //     <br></br>
         // </div>
-    <div class="navbar"> 
+    <div class="navbar">
         <Navbar bg="dark" expand="lg" variant="dark">
             <Navbar.Brand href="#home">
             <img

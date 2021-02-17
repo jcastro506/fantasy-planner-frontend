@@ -114,6 +114,7 @@ function TeamDetails ({userTeams}){
         //     {getStats()}
         // </div>
         <div className="chart">
+            <h2 class="h2">Team Stats</h2>
             <Chart class="chart" type="radar" data={chartData} options={lightOptions} />
         </div> 
     )

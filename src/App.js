@@ -110,7 +110,7 @@ console.log(userTeams)
 
   return (
     <div className="App">
-      <NavBar changeLogin={changeLogin} loggedIn={loggedIn}/> 
+      <NavBar loggedIn={loggedIn} setLogin={setLogin}/> 
       {/* <NewsContainer news={news}/>  */}
       <Switch>
         <Route exact path="/">

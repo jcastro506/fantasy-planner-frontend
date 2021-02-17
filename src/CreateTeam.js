@@ -148,6 +148,7 @@ function CreateTeam ({handleNewTeam}){
         </Form>
         </div> */}
         <div>
+            <h2 class="h2">Create A Team</h2>
          <form className="teamName" onSubmit={handleSubmit}>
             {/* <label>Name Your Team</label> */}
             <input type="text" name="teamName" placeholder="Team Name" value={teamName} onChange={e => setTeamName(e.target.value)}/> 

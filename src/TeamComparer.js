@@ -208,8 +208,9 @@ function TeamComparer ({userTeams}){
 
     return (
     <div>
+        <h2 class="h2">Compare Teams</h2>
         <form onSubmit={handleChange} >
-            <label>Pick Two Teams
+            <label>
                 <select 
                 name= "players"
                 value={teamOne}

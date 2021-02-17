@@ -17,7 +17,6 @@ function Login ({loggedIn, setLoggedIn}){
 
     return (
     <div>
-        <h3>Login</h3>
         <form onSubmit={handleSubmit}>
             <label for="usernmame">Username:</label>
             <input type="text" id="username" name="username" value={userName} placeholder="..." onChange={e => setUsername(e.target.value)} ></input>
