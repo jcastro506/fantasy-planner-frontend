@@ -63,6 +63,14 @@ code {
     margin-bottom: 2rem;
 }
 
+.datatable-style-demo{
+  background: white
+}
+
+.p-datatable{
+
+}
+
 .searchBar {
   /* width: 100px;
   margin: auto; */
@@ -88,17 +96,10 @@ code {
 
 .addPlayers { 
   display: inline-grid;
+  color: white;
 }
 
 .teamCards {
-  /* display: inline-grid; */
-  /* display: flex; */
-  /* grid-template-columns: auto auto auto;
-  justify-content: center;
-  padding: 10px;
-  margin: 10px;
-  background-color: black; */
-  /* background:rgb(219, 219, 219) */ 
   display: flex;
   flex-direction: row;
   /* display: inline-grid; */
@@ -106,6 +107,10 @@ code {
   justify-content: center;
   padding: 10px;
   margin: 10px
+}
+
+.teamName {
+  display: flex;
 }
 
 .eachCard {
@@ -139,3 +144,19 @@ code {
   grid-template-rows: auto auto;
   margin: auto;
 } */
+
+.datatable-style-demo {
+  margin: auto;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+}
+
+.chart {
+  background-color: black;
+  color: white;
+}
+
+.label {
+  color: white;
+}

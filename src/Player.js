@@ -23,7 +23,9 @@ function Player ({builder, setUserTeams}){
 
     return (
         <div onClick={handleSubmit}>
-            <button class="small-btn" key={builder.id} value={builder.id} size="small">Release Player</button>
+            <Button class="small-btn" key={builder.id} value={builder.id} size="small" color="primary" variant="light">Release Player</Button>
+            <br></br>
+            <br></br>
         </div>
     )   
 

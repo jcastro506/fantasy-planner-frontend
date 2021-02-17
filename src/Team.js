@@ -200,7 +200,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
             </Card.Text>
             <div class="editteam">
             <Button onClick={changeEdit} size="small" color="primary" variant="dark">{' '}
-            Pickup Player
+            Pickup/Release Player
             </Button>
             </div>
             <br></br>
@@ -247,7 +247,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
         {editClicked ? 
         <div>
         <form onSubmit={handleChange} >
-            <label class="releaseList">Pick A New Player
+            <label class="releaseList">
                 <select 
                 name= "players"
                 value={playerOne}
@@ -260,9 +260,12 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
             <button>Pick Up</button>
         </form>
         <form onSubmit={handlePlayerRelease} >
+            <br></br>
             <label class="releaseList">Release A Player
+                <br></br>
                 <ol class="releaseList">
-                    {team.players.map(function(player){return <li>{player.name}</li>})}{eachPlayer()}
+                    <br></br>
+                    {team.players.map(function(player){return <li>{player.name}</li>})}<br></br>{eachPlayer()}
                 </ol>
                 {/* {eachPlayer()} */}
             </label>

@@ -70,14 +70,16 @@ function TeamDetails ({userTeams}){
                     label: `${teamNameFunc()}`,
                     backgroundColor: 'rgba(255,99,132,0.2)',
                     borderColor: 'rgba(255,99,132,1)',
-                    pointBackgroundColor: 'rgba(255,99,132,1)',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: 'rgba(255,99,132,1)',
+                    pointBackgroundColor: "#ffffff",
+                    pointBorderColor: '#ffffff',
+                    pointHoverBackgroundColor: '#ffffff',
+                    pointHoverBorderColor: '#ffffff',
                     data: totalArr
                 }
         ]
     };
+    // 'rgba(255,99,132,1)'
+    // 'rgba(255,99,132,0.2)'
 
 
     function totalPoints(){
@@ -93,15 +95,15 @@ function TeamDetails ({userTeams}){
     const lightOptions = {
         legend: {
             labels: {
-                fontColor: '#495057'
+                fontColor: "#ffffff"
             }
         },
         scale: {
             pointLabels: {
-                fontColor: '#495057'
+                fontColor: "#ffffff" 
             },
             gridLines: {
-                color: '#ebedef'
+                color: "#ffffff" 
             }
         }
     };
@@ -111,8 +113,8 @@ function TeamDetails ({userTeams}){
         // <div className="project-item">
         //     {getStats()}
         // </div>
-        <div className="card">
-            <Chart type="radar" data={chartData} options={lightOptions} />
+        <div className="chart">
+            <Chart class="chart" type="radar" data={chartData} options={lightOptions} />
         </div> 
     )
 }

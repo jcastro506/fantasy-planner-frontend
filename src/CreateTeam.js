@@ -1,5 +1,6 @@
-import { Button } from 'bootstrap'
+import Button from 'react-bootstrap/Button'
 import React, {useState} from 'react' 
+import { Link } from "react-router-dom"
 import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
 
@@ -51,6 +52,8 @@ function CreateTeam ({handleNewTeam}){
     function addPlayers(e){
 
         e.preventDefault()
+
+        setClicked(!clicked)
 
         const newPlayerOne = {
             team_id: (teamId),
@@ -123,6 +126,8 @@ function CreateTeam ({handleNewTeam}){
             },
             body: JSON.stringify(newPlayerFive)
         })
+
+        alert(`${teamName} is in your profile!`)
     }
 
         // updateId()
@@ -142,11 +147,14 @@ function CreateTeam ({handleNewTeam}){
         </Form.Group>
         </Form>
         </div> */}
-         <form className="" onSubmit={handleSubmit}>
-            <label>Name Your Team</label>
+        <div>
+         <form className="teamName" onSubmit={handleSubmit}>
+            {/* <label>Name Your Team</label> */}
             <input type="text" name="teamName" placeholder="Team Name" value={teamName} onChange={e => setTeamName(e.target.value)}/> 
-            <button>Create Team</button> 
+            <button variant="light">Create Team</button> 
         </form>
+        </div>
+        <br></br>
         {clicked ? 
         <div class="addPlayers">
             <form onSubmit={addPlayers}>
@@ -156,7 +164,7 @@ function CreateTeam ({handleNewTeam}){
                 <input type="text" name="player3" placeholder="Player ID" value={playerThree} onChange={e => setPlayerThree(e.target.value)} />
                 <input type="text" name="player4" placeholder="Player ID" value={playerFour} onChange={e => setPlayerFour(e.target.value)} />
                 <input type="text" name="player5" placeholder="Player ID" value={playerFive} onChange={e => setPlayerFive(e.target.value)} />
-                <button>Add Players</button>
+                <button variant="light">Add Players</button>
             </form>
         </div>
             : null}

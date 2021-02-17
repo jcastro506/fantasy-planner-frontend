@@ -161,11 +161,20 @@ function TeamComparer ({userTeams}){
                 label: `${handleNames()}`, 
                 backgroundColor: 'rgba(179,181,198,0.2)',
                 borderColor: 'rgba(179,181,198,1)',
-                pointBackgroundColor: 'rgba(179,181,198,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(179,181,198,1)',
+                pointBackgroundColor: '#ffffff',
+                pointBorderColor: '#ffffff',
+                pointHoverBackgroundColor: '#ffffff',
+                pointHoverBorderColor: '#ffffff',
                 data: totalArr
+
+                // label: `${teamNameFunc()}`,
+                //     backgroundColor: 'rgba(255,99,132,0.2)',
+                //     borderColor: 'rgba(255,99,132,1)',
+                //     pointBackgroundColor: "#ffffff",
+                //     pointBorderColor: '#ffffff',
+                //     pointHoverBackgroundColor: '#ffffff',
+                //     pointHoverBorderColor: '#ffffff',
+                //     data: totalArr
             },
             {
                 label: `${handleNameTwo()}`,
@@ -183,12 +192,12 @@ function TeamComparer ({userTeams}){
     const lightOptions = {
         legend: {
             labels: {
-                fontColor: '#495057'
+                fontColor: '#ffffff'
             }
         },
         scale: {
             pointLabels: {
-                fontColor: '#495057'
+                fontColor: '#ffffff'
             },
             gridLines: {
                 color: '#ebedef'
@@ -221,7 +230,7 @@ function TeamComparer ({userTeams}){
             <br></br>
          </form>
        <br></br> 
-       <div className="card">
+       <div className="chart">
         <Chart type="radar" data={chartData} options={lightOptions} />
         </div> 
     </div>

@@ -39,9 +39,9 @@ function GraphContainer ({players, handleNewTeam, search, setSearch, newUserTeam
             <CreateTeam handleNewTeam={handleNewTeam} newUserTeams={newUserTeams} />
                 {/* <CreateTeam handleNewTeam={handleNewTeam} newUserTeams={newUserTeams} />  */}
                 {/* <div> */}
-        <div className="card">
+        <div className="datatable-style-demo">
           <DataTable value={players} className="p-datatable" paginator
-            paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+            paginatorTemplate="CurrentPageReport PrevPageLink PageLinks NextPageLink RowsPerPageDropdown"
             rows={15} 
             paginatorLeft={paginatorLeft} paginatorRight={paginatorRight}>
             <Column className="table-props" style={{width: "125px"}} field="id" header="Id" sortable></Column>
