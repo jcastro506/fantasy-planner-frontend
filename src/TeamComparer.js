@@ -155,7 +155,7 @@ function TeamComparer ({userTeams}){
     console.log(totalArrTwo)
 
     const chartData = {
-        labels: ['NBA Points', 'Rebounds', 'Field Goals Made', 'Fantasy Points', 'Minutes Played'],
+        labels: ['NBA Points', 'Rebounds', 'Field Goal Percentage ', 'Fantasy Points', 'Minutes Played'],
         datasets: [
             {
                 label: `${handleNames()}`, 
