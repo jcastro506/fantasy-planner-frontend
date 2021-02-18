@@ -257,7 +257,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
                     })} 
                 </select>
             </label>
-            <button>Pick Up</button>
+            <button class="createbutton">Pick Up</button>
         </form>
         <form onSubmit={handlePlayerRelease} >
             <br></br>

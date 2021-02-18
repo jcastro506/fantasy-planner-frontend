@@ -141,6 +141,19 @@ code {
   color: white;
 }
 
+.createbutton {
+  transition-duration: 0.4s;
+  font-size: 14px;
+  padding: 12px 28px;
+  background-color: #555555;
+  color: white 
+}
+
+.createbutton:hover {
+  background-color: #8B0000;
+  /* color: white; */
+}
+
 /* .flex-container {
   display: flex;
   grid-template-rows: auto auto;
