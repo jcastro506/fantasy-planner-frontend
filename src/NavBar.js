@@ -10,9 +10,6 @@ import NavDropdown from "react-bootstrap/NavDropdown"
 function NavBar ({loggedIn, setLogin}){
 
 
- 
-
-
 function handleClick(){
     setLogin()
 }

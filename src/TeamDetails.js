@@ -6,15 +6,14 @@ import { Chart } from 'primereact/chart'
 
 function TeamDetails ({userTeams}){
 
+    const baseUrl = "https://fntsypln.herokuapp.com"
+
     const [team, setTeam] = useState(null)
 
-
     const params = useParams()
-    console.log(params)
-
 
     useEffect(() => {
-        fetch(`http://localhost:3000/teams/${params.id}`)
+        fetch(`${baseUrl}/teams/${params.id}`)
             .then(r => r.json())
             .then(data => setTeam(data)
             )

@@ -64,62 +64,6 @@ function Home({loggedIn, setLoggedIn}) {
         </Form>
         : <Redirect to="/news"/> }
 
-
-
-{/* <Form>
-  <Form.Row className="align-items-center">
-    <Col xs="auto">
-      <Form.Label htmlFor="inlineFormInput" srOnly>
-        Name
-      </Form.Label>
-      <Form.Control
-        className="mb-2"
-        id="inlineFormInput"
-        placeholder="Jane Doe"
-      />
-    </Col>
-    <Col xs="auto">
-      <Form.Label htmlFor="inlineFormInputGroup" srOnly>
-        Username
-      </Form.Label>
-      <InputGroup className="mb-2">
-        <InputGroup.Prepend>
-          <InputGroup.Text>@</InputGroup.Text>
-        </InputGroup.Prepend>
-        <FormControl id="inlineFormInputGroup" placeholder="Username" />
-      </InputGroup>
-    </Col>
-    <Col xs="auto">
-      <Form.Check
-        type="checkbox"
-        id="autoSizingCheck"
-        className="mb-2"
-        label="Remember me"
-      />
-    </Col>
-    <Col xs="auto">
-      <Button type="submit" className="mb-2">
-        Submit
-      </Button>
-    </Col>
-  </Form.Row>
-</Form> */}
-        
-        
-        {/* {!loggedIn ? 
-        <div>
-            <h3>Signup</h3>
-        <form onSubmit={handleSignUp}>
-            <label for="usernmame">Username:</label>
-            <input type="text" id="username" name="username" value="" placeholder="Josh"></input>
-            <label for="lname">Password:</label>
-            <input type="text" id="password" name="password" value="" placeholder="123"></input>
-            <input type="submit" value="Submit"></input>
-         </form>
-        </div>
-        : null } */}
-       
-
         </div>
     </div>
     );

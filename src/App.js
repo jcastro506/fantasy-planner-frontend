@@ -19,6 +19,8 @@ import About from './About.js'
 
 function App() {
 
+  const baseUrl = "https://fntsypln.herokuapp.com"
+
   const [news, setNews] = useState([])
   const [players, setPlayers] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
@@ -36,7 +38,7 @@ function App() {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/players/`)
+    fetch(`${baseUrl}/players/`)
     .then((r) => r.json())
     .then(playersArr => {
       setPlayers(playersArr)
@@ -46,7 +48,7 @@ function App() {
 
   useEffect(() => {
     // fake auth
-    fetch("http://localhost:3000/users/1")
+    fetch(`${baseUrl}/users/1`)
       .then((r) => r.json())
       .then((user) => {
         let allTeams = user.teams

@@ -6,6 +6,8 @@ import Form from 'react-bootstrap/Form'
 
 function CreateTeam ({handleNewTeam}){
 
+    const baseUrl = "https://fntsypln.herokuapp.com"
+
     const [teamName, setTeamName] = useState("")
     const [playerOne, setPlayerOne] = useState("")
     const [playerTwo, setPlayerTwo] = useState("")
@@ -30,7 +32,7 @@ function CreateTeam ({handleNewTeam}){
             name: teamName
         }
 
-        fetch(`http://localhost:3000/teams`, {
+        fetch(`${baseUrl}/teams`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -78,7 +80,7 @@ function CreateTeam ({handleNewTeam}){
         }
 
 
-        fetch(`http://localhost:3000/team_builders`, {
+        fetch(`${baseUrl}/team_builders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -87,7 +89,7 @@ function CreateTeam ({handleNewTeam}){
             body: JSON.stringify(newPlayerOne)
         })
 
-        fetch(`http://localhost:3000/team_builders`, {
+        fetch(`${baseUrl}/team_builders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -96,7 +98,7 @@ function CreateTeam ({handleNewTeam}){
             body: JSON.stringify(newPlayerTwo)
         })
 
-        fetch(`http://localhost:3000/team_builders`, {
+        fetch(`${baseUrl}/team_builders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -105,7 +107,7 @@ function CreateTeam ({handleNewTeam}){
             body: JSON.stringify(newPlayerThree)
         })
 
-        fetch(`http://localhost:3000/team_builders`, {
+        fetch(`${baseUrl}/team_builders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -114,7 +116,7 @@ function CreateTeam ({handleNewTeam}){
             body: JSON.stringify(newPlayerFour)
         })
 
-        fetch(`http://localhost:3000/team_builders`, {
+        fetch(`${baseUrl}/team_builders`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

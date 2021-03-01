@@ -4,17 +4,19 @@ import Button from 'react-bootstrap/Button'
 
 function Player ({builder, setUserTeams}){
 
+    const baseUrl = "https://fntsypln.herokuapp.com"
+
         function handleSubmit(e){
 
             e.preventDefault()
             const builderId = e.target.value
 
-            fetch(`http://localhost:3000/team_builders/${builderId}`, {
+            fetch(`${baseUrl}/team_builders/${builderId}`, {
                 method: "DELETE"
             })
             .then(r => r.json())
             .then(() => {
-                fetch("http://localhost:3000/users/1")
+                fetch(`${baseUrl}/users/1`)
                 .then((r) => r.json())
                 .then((user) => setUserTeams(user.teams))
               })

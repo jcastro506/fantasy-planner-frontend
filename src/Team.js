@@ -15,6 +15,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
 
+    const baseUrl = "https://fntsypln.herokuapp.com"
 
     const [selected, setSelected] = useState('')
     const [editClicked, setEditClicked] = useState(false)
@@ -71,7 +72,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
 
 
     function handleDelete(e){
-        fetch(`http://localhost:3000/teams/${team.id}`, {
+        fetch(`${baseUrl}/teams/${team.id}`, {
             method: "DELETE"
         })
         .then(r => r.json())
@@ -90,7 +91,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
         }
 
     
-        fetch(`http://localhost:3000/team_builders`, {
+        fetch(`${baseUrl}/team_builders`, {
             method: 'POST', 
             headers: {
               'Content-Type': 'application/json',
@@ -99,7 +100,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
           })
           .then((r) => r.json())
           .then((user) => {
-            fetch("http://localhost:3000/users/1")
+            fetch(`${baseUrl}/users/1`)
             .then((r) => r.json())
             .then((user) => setUserTeams(user.teams))
           })
@@ -123,7 +124,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
         console.log(releasedPlayer)
 
         if (releasedPlayer){
-        fetch(`http://localhost:3000/players/${releasedPlayer}`, {
+        fetch(`${baseUrl}/players/${releasedPlayer}`, {
             method: "DELETE"
         })
         .then((r) => r.json())

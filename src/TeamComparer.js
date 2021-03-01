@@ -14,9 +14,6 @@ function TeamComparer ({userTeams}){
 
     function handleChange(e){
         e.preventDefault()
-
-        console.log(teamOne)
-
     }
 
     
@@ -26,7 +23,6 @@ function TeamComparer ({userTeams}){
 
     function teamOneFunc (){
         if (teamOne)  {
-            console.log(teamOne)
             let pointsArr = 0
             let reboundsArr = 0
             let fieldGoalArr = 0
@@ -41,7 +37,6 @@ function TeamComparer ({userTeams}){
                 minutesArr += player.minutes_played
             })
             totalArr.push(pointsArr, reboundsArr, fieldGoalArr/teamOne.players.length, fantasytPointsArr, minutesArr)
-            console.log(totalArr)
         }
     }
 
