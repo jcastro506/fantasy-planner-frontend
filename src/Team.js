@@ -4,13 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import TeamDetails from './TeamDetails.js'
 import EditTeam from './EditTeam.js'
 import { Dropdown } from 'primereact/dropdown';
-// import Card from '@material-ui/core/Card';
-// import CardActionArea from '@material-ui/core/CardActionArea';
-// import CardActions from '@material-ui/core/CardActions';
-// import CardContent from '@material-ui/core/CardContent';
-// import CardMedia from '@material-ui/core/CardMedia';
-// import Button from '@material-ui/core/Button';
-// import Typography from '@material-ui/core/Typography'
 import Player from './Player.js'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -45,30 +38,10 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
         return data1[Math.floor(Math.random() * data1.length)]
     }
 
-    // const useStyles = makeStyles({
-    //     root: {
-    //       maxWidth: 345,
-    //     },
-    //     media: {
-    //       height: 140,
-    //     },
-    //   });
-
-    // const classes = useStyles();
 
     function handleRelease(e){
         e.preventDefault()
         console.log(e.target.value)
-            
-        // const builderId = e.target.value
-
-        //  fetch(`http://localhost:3000/team_builders/${builderId}`, {
-        //         method: "DELETE"
-        //     })
-        //     .then(r => r.json())
-        //     .then(() => {
-        //         console.log("finished")
-        //     })
     }
 
     const eachPlayer = () => team.team_builders.map(function(builder){
@@ -116,11 +89,7 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
             player_id: playerOne
         }
 
-        console.log(e.target)
-
-        console.log(newPlayerOne)
     
-
         fetch(`http://localhost:3000/team_builders`, {
             method: 'POST', 
             headers: {
@@ -137,26 +106,9 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
     }
     
     
-
-
-        //   fetch(`http://localhost:3000/team_builders`, {
-        //     headers: {
-        //         method: "PATCH",
-        //         headers: {
-        //       'Content-Type': 'application/json'
-        //     },                                                              
-        //     body: JSON.stringify(newPlayerTwo)                                        
-        //     }
-        // })
-    
-
-    // console.log(team.id)
-    
-
     function changeEdit(){
         setEditClicked(!editClicked)
         setTeamId(team.id)
-        console.log(team)
     }
     console.log(teamID)
     
@@ -176,7 +128,6 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
         })
         .then((r) => r.json())
         .then((user) => {
-            console.log(user)
         })
     }
         else {
@@ -215,35 +166,6 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
         </Card.Body>
         </Card>
         </div>
-
-        {/* <Card className={classes.root} >
-        <CardActionArea>
-            <CardMedia
-            className={classes.media}
-            image="https://blog.logomyway.com/wp-content/uploads/2017/01/nba-logo-design.jpg"
-            title={team.name}
-            />
-            <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-                {team.name}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-                Players: {allPlayers} {eachPlayer()} 
-                <br></br>
-                Projected Total Points: {totalPoints()}
-            </Typography>
-            </CardContent>
-        </CardActionArea>
-        <CardActions>
-            <Button onClick={changeEdit} size="small" color="primary">
-            Edit
-            </Button>
-            <Button onClick={handleDelete} size="small" color="primary" id={team.id}>
-            Delete
-            </Button>
-            <Link to={`/teams/${team.id}`}>See Stats</Link>
-        </CardActions>
-        </Card> */}
         {editClicked ? 
         <div>
         <form onSubmit={handleChange} >
@@ -267,7 +189,6 @@ function Team ({team, deleteTeam, players, handleNewTeam, setUserTeams}) {
                     <br></br>
                     {team.players.map(function(player){return <li>{player.name}</li>})}<br></br>{eachPlayer()}
                 </ol>
-                {/* {eachPlayer()} */}
             </label>
         </form>
     </div>

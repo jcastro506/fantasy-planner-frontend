@@ -45,19 +45,6 @@ function Home({loggedIn, setLoggedIn}) {
     return (
 <div class="homeBody">
      <div id="home">
-         {/* {!loggedIn ?
-        <div>
-        
-        <h3>Login</h3>
-        <form onSubmit={handleSubmit}>
-            <label for="usernmame">Username:</label>
-            <input type="text" id="username" name="username" value={userName} placeholder="..." onChange={e => setUsername(e.target.value)} ></input>
-            <label for="lname">Password:</label>
-            <input type="password" id="password" name="password" value={password} placeholder="..." onChange={e => setPassword(e.target.value)} ></input>
-            <input type="submit" value="Submit"></input>
-         </form>
-        </div>
-        : null } */}
         
         {!loggedIn ? 
         <Form>

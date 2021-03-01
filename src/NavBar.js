@@ -20,33 +20,6 @@ function handleClick(){
 
 
     return (
-        // <div>
-        //     <h1>INSERT LOGO</h1>
-        //     <div>
-        //     {loggedIn ?
-        //         <Link to="/">Home</Link>
-        //         : null }
-        //         {loggedIn ?
-        //         <Link to="/news">News</Link>
-        //         : null }
-        //         {loggedIn ? 
-        //         <Link to="/players">Players</Link>
-        //         : null }
-        //         {loggedIn ? 
-        //         <Link to="/profile">Profile</Link>
-        //         : null }
-        //         {loggedIn ? 
-        //         <Link to="/teamComparer">Compare Team Stats</Link>
-        //         : null }
-        //     </div>
-        //     <div>
-        //     {loggedIn ? 
-        //     <Link onClick={handleClick} to="/">Logout</Link>
-        //     : null }
-        //     </div>
-        //     <br></br>
-        //     <br></br>
-        // </div>
     <div class="navbar">
         <Navbar bg="dark" expand="lg" variant="dark">
             <Navbar.Brand href="#home">

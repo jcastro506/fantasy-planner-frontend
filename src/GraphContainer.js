@@ -10,11 +10,6 @@ import Form from 'react-bootstrap/Form'
 
 function GraphContainer ({players, handleNewTeam, search, setSearch, newUserTeams, userFavorites}) {
 
-
-  //  const eachPlayer = players.map(function(player){
-  //       return <Player key={player.id} player={player} /> 
-  //  })
-       
    
     const paginatorLeft = <Button type="button" icon="pi pi-refresh" className="p-button-text"/>;
     const paginatorRight = <Button type="button" icon="pi pi-cloud" className="p-button-text"/>;

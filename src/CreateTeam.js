@@ -2,7 +2,6 @@ import Button from 'react-bootstrap/Button'
 import React, {useState} from 'react' 
 import { Link } from "react-router-dom"
 import Form from 'react-bootstrap/Form'
-// import Button from 'react-bootstrap/Button'
 
 
 function CreateTeam ({handleNewTeam}){
@@ -16,7 +15,6 @@ function CreateTeam ({handleNewTeam}){
     const [teamId, setTeamID] = useState(0)
     const [clicked, setClicked] = useState(false)
 
-// console.log("before post", teamId)
 
     function updateId (){
         setTeamID(teamId + 1)
@@ -25,7 +23,6 @@ function CreateTeam ({handleNewTeam}){
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log(e.target)
         setClicked(!clicked)
 
         const newTeam = {
@@ -80,7 +77,6 @@ function CreateTeam ({handleNewTeam}){
             player_id: playerFive
         }
 
-        // console.log("after Post", teamId)
 
         fetch(`http://localhost:3000/team_builders`, {
             method: "POST",
@@ -130,26 +126,11 @@ function CreateTeam ({handleNewTeam}){
         alert(`${teamName} is in your profile!`)
     }
 
-        // updateId()
-        // console.log("after post", teamId)
-
-    console.log("outside of function", teamId)
-
-
     return (
     <div class="row justify-content-center">
-        {/* <div class="row justify-content-center">
-        <Form>
-        <Form.Group controlId="name">
-            <Form.Label>Name Your Team</Form.Label>
-            <Form.Control type="text" placeholder="Team Name" value={teamName} onChange={e => setTeamName(e.target.value)}/>
-            <button id="button" onSubmit={handleSubmit}>Create Team</button>
-        </Form.Group>
-        </Form>
-        </div> */}
+        
          <h2 class="h2">Create A Team</h2>
          <form className="teamName" onSubmit={handleSubmit}>
-            {/* <label>Name Your Team</label> */}
             <input type="text" name="teamName" placeholder="Team Name" value={teamName} onChange={e => setTeamName(e.target.value)}/> 
             <button class="createbutton">Create Team</button> 
         </form>

@@ -28,8 +28,6 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false)
   const [favorites, setFavorites] = useState([])
 
-console.log(userTeams)
-
   useEffect(() => {
     fetch(`https://api.sportsdata.io/v3/nba/scores/json/News?key=fb6ead25e1fd44ffbfc076696dda1bd6`)
     .then((r) => r.json())
@@ -52,9 +50,7 @@ console.log(userTeams)
       .then((r) => r.json())
       .then((user) => {
         let allTeams = user.teams
-        console.log(allTeams)
       setUserTeams(allTeams)
-      console.log(user.teams)
       setUser(user)
       setIsLoaded(true)
       })
@@ -68,20 +64,16 @@ console.log(userTeams)
   
   function setLogin (){
     setLoggedIn(!loggedIn)
-    console.log(loggedIn)
   }
 
 
   function handleNewTeam(teamObj){
-    console.log("New Obj", teamObj)
     const newTeam = [...userTeams, teamObj]
     setUserTeams(newTeam)
-    console.log(newTeam)
   }
 
 
   function deleteTeam(id){
-    console.log("Delete Picture", id)
     const newArray = userTeams.filter(team => team.id !== id)
     setUserTeams(newArray)
   }
@@ -111,7 +103,6 @@ console.log(userTeams)
   return (
     <div className="App">
       <NavBar loggedIn={loggedIn} setLogin={setLogin}/> 
-      {/* <NewsContainer news={news}/>  */}
       <Switch>
         <Route exact path="/">
            <Home loggedIn={loggedIn} setLoggedIn={setLogin}/> 

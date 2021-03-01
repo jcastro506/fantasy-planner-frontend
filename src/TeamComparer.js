@@ -12,17 +12,6 @@ function TeamComparer ({userTeams}){
     const [clicked, setClicked] = useState(false)
  
 
-    // const data1 = [3642, 4238, 4300, 4432, 4016]
-    // const data2 = [4805, 4800, 3460, 3656, 4968]
-    // const data3 = [3500, 4013, 3156, 3920, 2900]
-    // const data4 = [3100, 4221, 4102, 3922, 4129]
-    // const data5 = [3865, 3255, 4011, 3875, 3991]
-
-    // let random = data1.sort(() => .5 - Math.random()).slice(0,5)
-    // let randomTwo = data1.sort(() => .5 - Math.random()).slice(0,5)
-
-
-
     function handleChange(e){
         e.preventDefault()
 
@@ -30,23 +19,7 @@ function TeamComparer ({userTeams}){
 
     }
 
-    // function getData (){
-    //     if (teamOne === "Josh's Allstars"){
-    //         return data1
-    //     }
-    //     else if (teamOne === "Dream Team"){
-    //         return data2 
-    //     }
-    //     else if (teamOne === "Kevin's Team"){
-    //         return data3
-    //     }
-    //     else if (teamOne === "Annie's Allstars"){
-    //         return data4
-    //     }
-    //     else{
-    //         return data5
-    //     }
-    // }
+    
     const totalArr = []
     const totalArrTwo = []
 
@@ -54,7 +27,6 @@ function TeamComparer ({userTeams}){
     function teamOneFunc (){
         if (teamOne)  {
             console.log(teamOne)
-            // let totalArr = []
             let pointsArr = 0
             let reboundsArr = 0
             let fieldGoalArr = 0
@@ -70,22 +42,18 @@ function TeamComparer ({userTeams}){
             })
             totalArr.push(pointsArr, reboundsArr, fieldGoalArr/teamOne.players.length, fantasytPointsArr, minutesArr)
             console.log(totalArr)
-            // return totalArr
         }
     }
 
 
     function teamTwoFunc (){
         if (teamTwo)  {
-            console.log(teamTwo)
-            // let totalArr = []
             let pointsArr = 0
             let reboundsArr = 0
             let fieldGoalArr = 0
             let fantasytPointsArr = 0
             let minutesArr = 0
             teamTwo.players.map((player) => {
-                console.log(player)
                 pointsArr += player.points
                 reboundsArr += player.rebounds
                 fieldGoalArr += player.field_goal_percentage
@@ -93,7 +61,6 @@ function TeamComparer ({userTeams}){
                 minutesArr += player.minutes_played
             })
             totalArrTwo.push(pointsArr, reboundsArr, fieldGoalArr/teamTwo.players.length, fantasytPointsArr, minutesArr)
-            // console.log(totalArrTwo)
             return totalArrTwo
         }
     }
@@ -122,7 +89,6 @@ function TeamComparer ({userTeams}){
 
     function handleTeamTwoChange(teamId){
         let foundTwoTeam = userTeams.filter(team => team.id === parseInt(teamId))
-        // console.log(foundTwoTeam)
         setTeamTwo(foundTwoTeam[0])
         setTeamTwoName(foundTwoTeam[0].name)
     }
@@ -148,11 +114,7 @@ function TeamComparer ({userTeams}){
 
     teamOneFunc()
     teamTwoFunc()
-    // console.log(userTeams)
-    // console.log(teamOne)
-    // console.log(teamTwo)
-    console.log(totalArr)
-    console.log(totalArrTwo)
+    
 
     const chartData = {
         labels: ['NBA Points', 'Rebounds', 'Field Goal Percentage ', 'Fantasy Points', 'Minutes Played'],
@@ -166,15 +128,6 @@ function TeamComparer ({userTeams}){
                 pointHoverBackgroundColor: '#ffffff',
                 pointHoverBorderColor: '#ffffff',
                 data: totalArr
-
-                // label: `${teamNameFunc()}`,
-                //     backgroundColor: 'rgba(255,99,132,0.2)',
-                //     borderColor: 'rgba(255,99,132,1)',
-                //     pointBackgroundColor: "#ffffff",
-                //     pointBorderColor: '#ffffff',
-                //     pointHoverBackgroundColor: '#ffffff',
-                //     pointHoverBorderColor: '#ffffff',
-                //     data: totalArr
             },
             {
                 label: `${handleNameTwo()}`,
